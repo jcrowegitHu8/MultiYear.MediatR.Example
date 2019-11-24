@@ -11,7 +11,7 @@ namespace MultiYear.MediatR.Example.WebApi.Servies
         dynamic FindYearSpecificRequest(object request, string yearNumber);
     }
 
-    public class ReflectionCommandLocatorService: IReflectionRequestLocatorService
+    public class ReflectionRequestLocatorService: IReflectionRequestLocatorService
     {
         public dynamic FindYearSpecificRequest(object request, string yearNumber)
         {

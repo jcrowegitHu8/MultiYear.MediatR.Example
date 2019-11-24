@@ -10,7 +10,7 @@ namespace BusinessLogic.Year1.Application
     public class DoSomething1Request : IRequest<string>
     {
     }
-
+    //MediatR.IRequestHandler`2[BusinessLogic.Year1.Application.DoSomething1Request,System.String]
     public class DoSomething1RequestHandler : IRequestHandler<DoSomething1Request, string>
     {
         public Task<string> Handle(DoSomething1Request request, CancellationToken cancellationToken)

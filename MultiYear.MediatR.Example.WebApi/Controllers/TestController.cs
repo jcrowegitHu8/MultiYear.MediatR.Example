@@ -25,6 +25,10 @@ namespace MultiYear.MediatR.Example.WebApi.Controllers
             _requestLocator = requestLocator;
         }
 
+        /// <summary>
+        /// Showing issue with MediatR failing to resolve requested created by reflection.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
         [Route("mediatR")]
@@ -34,6 +38,7 @@ namespace MultiYear.MediatR.Example.WebApi.Controllers
             var coreRequest = new core.Application.DoSomething1Request();
             try
             {
+                //Show that core request hits core handler.
                 var coreExample1 = await _mediatR.Send(coreRequest);
                 result.CoreInstance = coreExample1;
             }
@@ -44,6 +49,7 @@ namespace MultiYear.MediatR.Example.WebApi.Controllers
 
             try
             {
+                //Show that year1 request hits year1 handler
                 var y1Example = await _mediatR.Send(new y1.Application.DoSomething1Request());
                 result.Year1Instance = y1Example;
             }
@@ -54,6 +60,7 @@ namespace MultiYear.MediatR.Example.WebApi.Controllers
 
             try
             {
+                //show that year1 request created by reflection fails to resolve handler
                 var yearSpecificRequest = _requestLocator.FindYearSpecificRequest(coreRequest, "1");
                 var reflectionResult = await _mediatR.Send(yearSpecificRequest);
                 result.Year1ReflectionInstance = reflectionResult;
