@@ -60,7 +60,7 @@ namespace MultiYear.MediatR.Example.WebApi.Controllers
 
             try
             {
-                //show that year1 request created by reflection fails to resolve handler
+                //show that year1 request created by reflection works!
                 var yearSpecificRequest = _requestLocator.FindYearSpecificRequest(coreRequest, "1");
                 var reflectionResult = await _mediatR.Send(yearSpecificRequest);
                 result.Year1ReflectionInstance = reflectionResult;
